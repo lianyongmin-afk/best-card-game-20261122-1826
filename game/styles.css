@@ -1,0 +1,82 @@
+/* Lantern Duel — table styling. Dark felt table, warm lantern light,
+   four elements told apart by colour AND glyph shape. */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: #101820 radial-gradient(ellipse at 50% 0%, #1d2f26 0%, #101820 65%);
+  color: #f3ead3;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+#app { min-height: 100vh; display: flex; }
+.screen { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; }
+.lantern { font-size: 64px; line-height: 1; }
+h1 { font-size: 56px; letter-spacing: 6px; color: #ffd97a; text-shadow: 0 0 24px rgba(255, 190, 80, .55); margin: 12px 0; }
+.tagline { font-size: 18px; line-height: 1.5; color: #d8cba8; max-width: 560px; }
+.rules { margin: 22px 0; padding: 16px 22px; border: 1px solid #6b5a2e; border-radius: 12px; background: rgba(0, 0, 0, .35); text-align: left; font-size: 15px; line-height: 1.9; }
+.big-btn {
+  margin-top: 8px; padding: 14px 34px; font-size: 20px; font-family: inherit; cursor: pointer;
+  color: #241a05; background: linear-gradient(#ffe08a, #f0b93e); border: none; border-radius: 999px;
+  box-shadow: 0 4px 0 #8a6414, 0 8px 24px rgba(0, 0, 0, .5);
+}
+.big-btn:hover { filter: brightness(1.08); }
+.foot { margin-top: 18px; font-size: 13px; color: #9a8f6d; }
+
+/* ---- table ---- */
+.table { justify-content: flex-start; align-items: stretch; text-align: left; max-width: 1180px; margin: 0 auto; width: 100%; }
+.topbar { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 6px 4px 14px; border-bottom: 1px solid #3d4a35; }
+.brand { font-size: 22px; letter-spacing: 3px; color: #ffd97a; }
+.meta, .energy { font-size: 16px; }
+.energy b { color: #ffd97a; }
+.foe-row, .player-row { display: flex; gap: 20px; align-items: center; padding: 14px 4px; }
+.fighter { width: 230px; flex: none; }
+.fname { font-size: 20px; margin-bottom: 6px; }
+.ftitle { font-size: 13px; color: #a99e7c; font-style: italic; }
+.hp { height: 16px; background: #2a1a1a; border: 1px solid #6b4a2e; border-radius: 999px; overflow: hidden; }
+.hp-fill { height: 100%; background: linear-gradient(90deg, #e5484d, #ff8a5c); transition: width .4s ease; }
+.foe .hp-fill { background: linear-gradient(90deg, #8a5cf6, #c77dff); }
+.hp-num { font-size: 15px; margin-top: 5px; }
+.shield { color: #7cc4ff; }
+.hand { display: flex; gap: 10px; flex-wrap: wrap; }
+.middle { display: flex; justify-content: space-between; align-items: center; padding: 6px 4px; }
+.table-centre { font-size: 17px; color: #d8cba8; }
+.end-btn {
+  padding: 10px 22px; font-size: 16px; font-family: inherit; cursor: pointer; color: #f3ead3;
+  background: #3a2f16; border: 1px solid #a8842e; border-radius: 10px;
+}
+.end-btn:hover:not(:disabled) { background: #54431f; }
+.end-btn:disabled { opacity: .45; cursor: default; }
+
+/* ---- cards ---- */
+.card {
+  position: relative; width: 132px; height: 184px; border-radius: 12px; cursor: default;
+  background: linear-gradient(160deg, #fff8e6, #f0e2c0); color: #241a05; border: 3px solid var(--el);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .5); font-family: inherit; text-align: center;
+  display: flex; flex-direction: column; align-items: center; padding: 8px 6px; gap: 2px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.card.playable { cursor: pointer; }
+.card.playable:hover, .card.selected { transform: translateY(-12px) scale(1.04); box-shadow: 0 14px 26px rgba(0, 0, 0, .6), 0 0 0 3px #ffd97a; }
+.card .cost {
+  position: absolute; top: 6px; left: 6px; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--el); color: #fff; font-weight: bold; font-size: 15px; line-height: 30px;
+}
+.card .glyph { font-size: 34px; color: var(--eld); line-height: 1.1; margin-top: 26px; }
+.card .cname { font-size: 17px; font-weight: bold; }
+.card .ckind { font-size: 14px; color: var(--eld); font-weight: bold; }
+.card .ctext { font-size: 12.5px; line-height: 1.35; color: #5a4a28; }
+.card .chain { font-size: 12px; font-weight: bold; color: #b3541e; background: #ffe9b0; border-radius: 6px; padding: 1px 6px; }
+.card.back { background: linear-gradient(160deg, #6b5aa8, #3a2f66); color: #e8e0ff; border-color: #9a86d8; width: 104px; height: 148px; }
+.card.back .glyph { color: #ffd97a; margin-top: 34px; }
+.card.back .cname { color: #e8e0ff; }
+.card.back .ctext { color: #b9aede; }
+.empty-hand { color: #9a8f6d; font-style: italic; }
+.log { list-style: none; margin-top: 8px; font-size: 14px; line-height: 1.7; color: #c9bd97; border-top: 1px solid #3d4a35; padding-top: 8px; }
+.hint { margin-top: 10px; font-size: 13px; color: #8d8265; }
+
+/* ---- end screens ---- */
+.end-screen.win h1 { color: #7dff9e; text-shadow: 0 0 24px rgba(80, 255, 140, .5); }
+.end-screen.loss h1 { color: #ff8a7a; text-shadow: 0 0 24px rgba(255, 90, 70, .5); }
+.final-stats { display: flex; gap: 26px; margin: 22px 0; }
+.final-stats div { display: flex; flex-direction: column; gap: 4px; }
+.final-stats span { font-size: 13px; color: #a99e7c; text-transform: uppercase; letter-spacing: 1px; }
+.final-stats b { font-size: 30px; color: #ffd97a; }
